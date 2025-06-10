@@ -143,10 +143,22 @@ export default function Home() {
             The Anshita Effect ✨
           </Link>
           <Link
+            href="/day-everything-changed"
+            className="text-xs text-red-500 hover:text-red-600 transition-colors font-handwritten"
+          >
+            The Day Everything Changed 💔
+          </Link>
+          <Link
             href="/turn-back-time"
             className="text-xs text-blue-500 hover:text-blue-600 transition-colors font-handwritten"
           >
             If I Could Turn Back Time ⏰
+          </Link>
+          <Link
+            href="/forgiveness-tree"
+            className="text-xs text-green-500 hover:text-green-600 transition-colors font-handwritten"
+          >
+            The Forgiveness Tree 🌳
           </Link>
           <Link
             href="/your-happiness"
@@ -154,12 +166,7 @@ export default function Home() {
           >
             Your Happiness Matters Most 🌟
           </Link>
-          <Link
-            href="/mate-chronicles"
-            className="text-xs text-orange-500 hover:text-orange-600 transition-colors font-handwritten"
-          >
-            The Mate Chronicles 🤝
-          </Link>
+
           <Link
             href="/invisible-threads"
             className="text-xs text-purple-500 hover:text-purple-600 transition-colors font-handwritten"

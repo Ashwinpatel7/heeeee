@@ -44,14 +44,7 @@ export default function AnshitaEffectPage() {
     }
   ];
 
-  const rippleEffects = [
-    "My sister says I'm a better listener now",
-    "My friends feel safer opening up to me",
-    "I helped a classmate through a tough time the way you would have",
-    "I stopped gossiping because I remembered how you never spoke badly of anyone",
-    "I started volunteering because your kindness inspired me to give back",
-    "I apologize more genuinely now, the way you taught me accountability matters"
-  ];
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 relative overflow-hidden">
@@ -110,54 +103,7 @@ export default function AnshitaEffectPage() {
           ))}
         </div>
 
-        {/* Ripple Effects */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-3xl p-8 shadow-xl border border-purple-200"
-        >
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            The Ripple Effect
-          </h2>
-          <p className="text-gray-700 text-center mb-8 font-handwritten text-lg">
-            Your kindness didn't just change me—it created waves that touched so many others...
-          </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {rippleEffects.map((ripple, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1 + (index * 0.1) }}
-                className="bg-white/80 rounded-xl p-4 shadow-md border border-white/60"
-              >
-                <div className="text-center">
-                  <div className="text-2xl mb-2">🌊</div>
-                  <p className="text-gray-700 text-sm font-handwritten leading-relaxed">
-                    {ripple}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2 }}
-            className="mt-8 text-center"
-          >
-            <div className="bg-white/60 rounded-2xl p-6 backdrop-blur-sm">
-              <p className="text-gray-800 font-handwritten text-xl leading-relaxed">
-                You probably don&apos;t even realize it, but your kindness lives on in every person I meet,
-                every conversation I have, every moment I choose compassion over judgment.
-                You made me a better human being, and through me, you&apos;ve touched countless other lives.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
       </div>
 
       {/* Navigation */}
