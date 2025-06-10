@@ -14,56 +14,56 @@ export default function ForgivenessTreePage() {
     {
       id: 1,
       lesson: "Trust is not about immediate responses",
-      detail: "Real trust means believing in someone&apos;s heart even when you can&apos;t see their actions.",
+      detail: "Real friendship means believing in someone&apos;s character even when you can&apos;t see their actions.",
       color: "from-green-400 to-emerald-500",
       position: { x: 20, y: 15 }
     },
     {
       id: 2,
-      lesson: "Love means giving space",
-      detail: "Sometimes the most loving thing you can do is step back and let someone breathe.",
+      lesson: "Good friends respect space",
+      detail: "Sometimes the most caring thing you can do is step back and let a friend breathe.",
       color: "from-blue-400 to-cyan-500",
       position: { x: 80, y: 25 }
     },
     {
       id: 3,
-      lesson: "Boundaries are acts of self-care",
-      detail: "When someone sets a boundary, they&apos;re not rejecting you—they&apos;re taking care of themselves.",
+      lesson: "Boundaries are healthy in friendship",
+      detail: "When a friend sets a boundary, they&apos;re not rejecting you—they&apos;re taking care of themselves.",
       color: "from-purple-400 to-violet-500",
       position: { x: 15, y: 45 }
     },
     {
       id: 4,
-      lesson: "Silence doesn&apos;t mean absence",
-      detail: "Just because someone isn&apos;t speaking doesn&apos;t mean they don&apos;t care.",
+      lesson: "Silence doesn&apos;t mean the friendship is over",
+      detail: "Just because someone isn&apos;t speaking doesn&apos;t mean they don&apos;t value your friendship.",
       color: "from-pink-400 to-rose-500",
       position: { x: 75, y: 55 }
     },
     {
       id: 5,
-      lesson: "Fear makes us selfish",
-      detail: "When we&apos;re scared, we often make everything about our own pain instead of seeing others&apos; needs.",
+      lesson: "Insecurity can damage friendships",
+      detail: "When we&apos;re insecure, we often make everything about our own feelings instead of seeing our friend&apos;s perspective.",
       color: "from-yellow-400 to-orange-500",
       position: { x: 45, y: 35 }
     },
     {
       id: 6,
-      lesson: "Patience is a form of love",
-      detail: "Good things—especially relationships—grow in their own time, not on our timeline.",
+      lesson: "Patience strengthens friendships",
+      detail: "Good friendships grow in their own time, not on our timeline.",
       color: "from-indigo-400 to-blue-500",
       position: { x: 25, y: 65 }
     },
     {
       id: 7,
-      lesson: "Listening is more important than explaining",
-      detail: "Sometimes people need to be heard, not convinced.",
+      lesson: "Listening is more important than defending",
+      detail: "Sometimes friends need to be heard and understood, not convinced.",
       color: "from-teal-400 to-green-500",
       position: { x: 70, y: 75 }
     },
     {
       id: 8,
-      lesson: "Growth comes from discomfort",
-      detail: "The hardest lessons teach us the most about who we want to become.",
+      lesson: "Mistakes can teach us to be better friends",
+      detail: "The hardest lessons help us understand what true friendship really means.",
       color: "from-red-400 to-pink-500",
       position: { x: 55, y: 20 }
     }
@@ -132,8 +132,8 @@ export default function ForgivenessTreePage() {
           <span className="font-handwritten text-green-600">The Forgiveness Tree</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Each leaf holds a lesson learned from our story. Shake the tree gently 
-          to release the wisdom that grew from the pain.
+          Each leaf holds a lesson learned from our friendship journey. Shake the tree gently
+          to release the wisdom that grew from my mistakes.
         </p>
       </motion.div>
 
@@ -272,8 +272,8 @@ export default function ForgivenessTreePage() {
               
               <div className="bg-white/60 rounded-2xl p-6 backdrop-blur-sm">
                 <p className="text-gray-800 font-handwritten text-xl leading-relaxed">
-                  Every fallen leaf represents growth that came from pain, wisdom that emerged from mistakes, 
-                  and love that learned to be better. This tree will keep growing, and so will I.
+                  Every fallen leaf represents growth that came from mistakes, wisdom that emerged from reflection,
+                  and friendship lessons that made me a better person. This tree will keep growing, and so will I.
                 </p>
               </div>
 
