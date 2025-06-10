@@ -188,10 +188,10 @@ export default function Chapter3() {
         </Link>
         
         <Link
-          href="/chapter4"
+          href="/chapter4-third-voice"
           className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
         >
-          You Changed Me
+          The Third Voice
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </motion.div>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import ChatBubble from '@/components/ChatBubble';
+import SoundEffects from '@/components/SoundEffects';
 
 interface Message {
   id: number;
@@ -55,11 +56,16 @@ const messages: Message[] = [
 export default function Chapter1() {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [showNavigation, setShowNavigation] = useState(false);
+  const [sliderValue, setSliderValue] = useState(0);
+  const [playChime, setPlayChime] = useState(false);
+  const totalMessages = 247; // Total messages exchanged
 
   useEffect(() => {
     messages.forEach((message) => {
       setTimeout(() => {
         setVisibleMessages(prev => [...prev, message.id]);
+        setPlayChime(true);
+        setTimeout(() => setPlayChime(false), 100);
       }, message.delay);
     });
 
@@ -70,7 +76,8 @@ export default function Chapter1() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-blue-50 to-purple-50 relative overflow-hidden">
+      <SoundEffects playChime={playChime} />
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -78,12 +85,12 @@ export default function Chapter1() {
         transition={{ duration: 0.8 }}
         className="text-center pt-12 pb-8 px-6"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
-          <span className="font-handwritten text-pink-400">Chapter 1:</span>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <span className="font-handwritten text-pink-600">Chapter 1:</span>
           <br />
           The First Hi
         </h1>
-        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Remember when I texted after your surgery and you said "I'm better now, thank you"? 
           That was the start of everything.
         </p>
@@ -91,15 +98,15 @@ export default function Chapter1() {
 
       {/* Chat Container */}
       <div className="max-w-md mx-auto px-6 pb-20">
-        <div className="bg-slate-800/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 min-h-[500px] border border-slate-700">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 min-h-[500px] border border-white/40">
           {/* Chat Header */}
           <div className="flex items-center gap-3 pb-4 border-b border-gray-200 mb-6">
             <div className="w-10 h-10 bg-gradient-to-br from-blush-400 to-blush-500 rounded-full flex items-center justify-center">
               <MessageCircle className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-100">Anshita</h3>
-              <p className="text-sm text-green-400">Online</p>
+              <h3 className="font-semibold text-gray-800">Anshita</h3>
+              <p className="text-sm text-green-500">Online</p>
             </div>
           </div>
 
@@ -163,10 +170,50 @@ export default function Chapter1() {
         >
           <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
             <p className="text-gray-700 font-handwritten text-lg leading-relaxed">
-              "Two simple words changed everything. Your kindness in that moment, 
-              your gentle 'thank you'... it made my heart do backflips. 
+              "Two simple words changed everything. Your kindness in that moment,
+              your gentle 'thank you'... it made my heart do backflips.
               I knew right then that talking to you felt different. Special."
             </p>
+          </div>
+        </motion.div>
+
+        {/* Interactive Slider */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: visibleMessages.length === messages.length ? 1 : 0, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="mt-8"
+        >
+          <div className="bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl p-6 shadow-lg border border-pink-200">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+              Slide to See How Often We Said Hi
+            </h3>
+            <div className="relative">
+              <input
+                type="range"
+                min="0"
+                max={totalMessages}
+                value={sliderValue}
+                onChange={(e) => setSliderValue(parseInt(e.target.value))}
+                className="w-full h-3 bg-gradient-to-r from-pink-200 to-purple-200 rounded-lg appearance-none cursor-pointer slider"
+              />
+              <div className="flex justify-between text-sm text-gray-600 mt-2">
+                <span>First message</span>
+                <span className="font-semibold text-pink-600">
+                  {sliderValue} messages
+                </span>
+                <span>Last conversation</span>
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-gray-700 font-handwritten">
+                {sliderValue === 0 && "Move the slider to see our journey..."}
+                {sliderValue > 0 && sliderValue < 50 && "Those first tentative hellos..."}
+                {sliderValue >= 50 && sliderValue < 100 && "Getting comfortable with each other..."}
+                {sliderValue >= 100 && sliderValue < 200 && "Daily conversations became our routine..."}
+                {sliderValue >= 200 && "Every single message mattered. Every 'hi' was hope."}
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

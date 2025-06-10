@@ -10,45 +10,55 @@ export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    // Simplified audio implementation to reduce CPU usage
-    let audioNodes: any = null;
+    // Create audio element for the background song
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+      audioRef.current.loop = true;
 
-    if (isPlaying && !isMuted) {
-      try {
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-
-        // Single oscillator for better performance
-        const osc = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-
-        // Simple sine wave at low frequency
-        osc.frequency.setValueAtTime(220, audioContext.currentTime);
-        osc.type = 'sine';
-
-        // Very low volume
-        gainNode.gain.setValueAtTime(volume * 0.05, audioContext.currentTime);
-
-        osc.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-
-        osc.start();
-        audioNodes = { osc, gainNode, audioContext };
-      } catch (error) {
-        console.log('Audio context not available');
+      if (isPlaying && !isMuted) {
+        audioRef.current.play().catch(error => {
+          console.log('Audio play failed:', error);
+        });
+      } else {
+        audioRef.current.pause();
       }
     }
-
-    return () => {
-      if (audioNodes) {
-        try {
-          audioNodes.osc.stop();
-          audioNodes.audioContext.close();
-        } catch (error) {
-          // Ignore cleanup errors
-        }
-      }
-    };
   }, [isPlaying, isMuted, volume]);
+
+  // Auto-play immediately when component mounts
+  useEffect(() => {
+    // Set playing to true immediately
+    setIsPlaying(true);
+
+    // Try to play the audio immediately
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+      audioRef.current.loop = true;
+
+      // Attempt autoplay
+      const playPromise = audioRef.current.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('Autoplay failed, will try on first user interaction:', error);
+
+          // Fallback: play on first user interaction
+          const handleFirstInteraction = () => {
+            if (audioRef.current) {
+              audioRef.current.play().catch(e => console.log('Play failed:', e));
+            }
+            document.removeEventListener('click', handleFirstInteraction);
+            document.removeEventListener('keydown', handleFirstInteraction);
+            document.removeEventListener('touchstart', handleFirstInteraction);
+          };
+
+          document.addEventListener('click', handleFirstInteraction);
+          document.addEventListener('keydown', handleFirstInteraction);
+          document.addEventListener('touchstart', handleFirstInteraction);
+        });
+      }
+    }
+  }, [volume]);
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
@@ -59,49 +69,60 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-md rounded-full p-3 shadow-lg">
-      <div className="flex items-center space-x-2">
-        <button
-          onClick={togglePlay}
-          className="p-2 rounded-full bg-blush-400/20 hover:bg-blush-400/30 transition-colors"
-          title={isPlaying ? 'Pause music' : 'Play gentle music'}
-        >
-          {isPlaying ? (
-            <Pause className="w-4 h-4 text-blush-600" />
-          ) : (
-            <Play className="w-4 h-4 text-blush-600" />
-          )}
-        </button>
-        
-        <button
-          onClick={toggleMute}
-          className="p-2 rounded-full bg-blush-400/20 hover:bg-blush-400/30 transition-colors"
-          title={isMuted ? 'Unmute' : 'Mute'}
-        >
-          {isMuted ? (
-            <VolumeX className="w-4 h-4 text-blush-600" />
-          ) : (
-            <Volume2 className="w-4 h-4 text-blush-600" />
-          )}
-        </button>
-        
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.1"
-          value={volume}
-          onChange={(e) => setVolume(parseFloat(e.target.value))}
-          className="w-16 h-1 bg-blush-200 rounded-lg appearance-none cursor-pointer"
-          title="Volume"
-        />
-      </div>
-      
-      {isPlaying && (
-        <div className="text-xs text-blush-600 mt-1 text-center font-handwritten">
-          ♪ gentle vibes ♪
+    <>
+      {/* Hidden audio element */}
+      <audio
+        ref={audioRef}
+        src="/Die With A Smile-(SambalpuriStar.In).mp3"
+        preload="auto"
+        autoPlay
+        loop
+      />
+
+      <div className="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-md rounded-full p-3 shadow-lg">
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={togglePlay}
+            className="p-2 rounded-full bg-pink-400/20 hover:bg-pink-400/30 transition-colors"
+            title={isPlaying ? 'Pause music' : 'Play gentle music'}
+          >
+            {isPlaying ? (
+              <Pause className="w-4 h-4 text-pink-600" />
+            ) : (
+              <Play className="w-4 h-4 text-pink-600" />
+            )}
+          </button>
+
+          <button
+            onClick={toggleMute}
+            className="p-2 rounded-full bg-pink-400/20 hover:bg-pink-400/30 transition-colors"
+            title={isMuted ? 'Unmute' : 'Mute'}
+          >
+            {isMuted ? (
+              <VolumeX className="w-4 h-4 text-pink-600" />
+            ) : (
+              <Volume2 className="w-4 h-4 text-pink-600" />
+            )}
+          </button>
+
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={volume}
+            onChange={(e) => setVolume(parseFloat(e.target.value))}
+            className="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"
+            title="Volume"
+          />
         </div>
-      )}
-    </div>
+
+        {isPlaying && (
+          <div className="text-xs text-pink-600 mt-1 text-center font-handwritten">
+            ♪ Die With A Smile ♪
+          </div>
+        )}
+      </div>
+    </>
   );
 }

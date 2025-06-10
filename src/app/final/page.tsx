@@ -277,8 +277,8 @@ export default function FinalPage() {
         className="fixed bottom-8 left-8 z-20"
       >
         <Link
-          href="/chapter5"
-          className="flex items-center gap-2 bg-slate-800/90 backdrop-blur-sm text-slate-200 px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group border border-slate-600"
+          href="/chapter6-what-ifs"
+          className="flex items-center gap-2 bg-white/90 backdrop-blur-sm text-gray-700 px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to What If...

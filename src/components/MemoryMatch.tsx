@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, MessageCircle, Smile, Star, Music, Coffee } from 'lucide-react';
+import SoundEffects from './SoundEffects';
 
 interface Card {
   id: number;
@@ -31,6 +32,7 @@ export default function MemoryMatch({ onComplete }: MemoryMatchProps) {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedPairs, setMatchedPairs] = useState<number>(0);
   const [moves, setMoves] = useState(0);
+  const [playGiggle, setPlayGiggle] = useState(false);
 
   useEffect(() => {
     // Create pairs and shuffle
@@ -83,6 +85,9 @@ export default function MemoryMatch({ onComplete }: MemoryMatchProps) {
 
       if (firstCard?.content === secondCard?.content) {
         // Match found!
+        setPlayGiggle(true);
+        setTimeout(() => setPlayGiggle(false), 100);
+
         setTimeout(() => {
           setCards(prev => prev.map(card =>
             newFlippedCards.includes(card.id)
@@ -116,6 +121,7 @@ export default function MemoryMatch({ onComplete }: MemoryMatchProps) {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
+      <SoundEffects playGiggle={playGiggle} />
       {/* Game Stats */}
       <div className="flex justify-between items-center mb-6">
         <div className="text-sm text-gray-600">

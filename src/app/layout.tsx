@@ -4,6 +4,7 @@ import "./globals.css";
 import SakuraPetals from "@/components/SakuraPetals";
 import MusicPlayer from "@/components/MusicPlayer";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
+import GrowingTree from "@/components/GrowingTree";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,6 +47,7 @@ export default function RootLayout({
         <PerformanceOptimizer />
         <SakuraPetals />
         <MusicPlayer />
+        <GrowingTree />
         {children}
       </body>
     </html>
