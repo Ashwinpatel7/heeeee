@@ -1,103 +1,150 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import { Heart, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import EasterEgg from '@/components/EasterEgg';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-blue-500/10 to-purple-500/10" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Easter eggs scattered around */}
+      <EasterEgg
+        message="You once said 'Hehe' and my whole mood lifted."
+        position={{ top: '15%', left: '10%' }}
+      />
+      <EasterEgg
+        message="Your calm voice still lives in my head."
+        position={{ top: '25%', right: '15%' }}
+      />
+      <EasterEgg
+        message="Even now, I reread our chats just to feel close again."
+        position={{ bottom: '20%', left: '20%' }}
+      />
+
+      {/* Main content */}
+      <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
+        {/* Floating hearts */}
+        <motion.div
+          className="absolute -top-10 -left-10"
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 5, -5, 0]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <Heart className="w-8 h-8 text-pink-400 fill-current opacity-80" />
+        </motion.div>
+
+        <motion.div
+          className="absolute -top-16 right-0"
+          animate={{
+            y: [0, -15, 0],
+            rotate: [0, -5, 5, 0]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        >
+          <Heart className="w-6 h-6 text-purple-400 fill-current opacity-70" />
+        </motion.div>
+
+        {/* Main title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-5xl md:text-7xl font-bold text-slate-100 mb-6"
+        >
+          <span className="font-handwritten text-pink-400">Hey Mate,</span>
+          <br />
+          <span className="bg-gradient-to-r from-pink-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Can We Start Again?
+          </span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          className="text-xl md:text-2xl text-slate-300 mb-12 font-light leading-relaxed"
+        >
+          A small space made with{' '}
+          <span className="font-handwritten text-pink-400 text-2xl">big love</span>{' '}
+          for someone{' '}
+          <span className="font-handwritten text-purple-400 text-2xl">unforgettable</span>.
+        </motion.p>
+
+        {/* Enter button */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Link
+            href="/chapter1"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+            <Heart className="w-5 h-5 fill-current group-hover:animate-pulse" />
+            Enter Our Story
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
+
+        {/* Gentle message */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+          className="mt-8 text-sm text-slate-400 font-handwritten"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Take your time. There's no rush here. 💕
+        </motion.p>
+      </div>
+
+      {/* Optimized decorative elements */}
+      <motion.div
+        className="absolute bottom-10 left-10"
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.05, 1]
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      >
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-500/20" />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-20 right-20"
+        animate={{
+          rotate: [360, 0],
+          scale: [1, 1.08, 1]
+        }}
+        transition={{
+          duration: 35,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      >
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400/20 to-purple-500/20" />
+      </motion.div>
     </div>
   );
 }
