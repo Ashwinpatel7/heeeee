@@ -63,7 +63,7 @@ export default function InvisibleThreadsPage() {
         setConnectedMoments(prev => [...prev, thread.id]);
       }, (index + 1) * 1000);
     });
-  }, []);
+  }, [threads]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
@@ -149,17 +149,17 @@ export default function InvisibleThreadsPage() {
                 </linearGradient>
               </defs>
               
-              {connectedMoments.map((_, index) => (
+              {connectedMoments.map((_, i) => (
                 <motion.path
-                  key={index}
-                  d={`M 50 50 Q 200 ${20 + index * 15} 350 50`}
+                  key={i}
+                  d={`M 50 50 Q 200 ${20 + i * 15} 350 50`}
                   stroke="url(#threadGradient)"
                   strokeWidth="2"
                   fill="none"
                   opacity="0.6"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={{ duration: 2, delay: index * 0.3 }}
+                  transition={{ duration: 2, delay: i * 0.3 }}
                 />
               ))}
             </svg>

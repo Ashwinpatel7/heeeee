@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, MessageSquare, Heart, Eye, EyeOff } from 'lucide-react';
+import { ArrowRight, ArrowLeft, MessageSquare, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ThirdVoiceChapter() {

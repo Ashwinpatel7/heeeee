@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Heart, Sun, Star, Smile, Rainbow, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function YourHappinessPage() {
-  const [currentWish, setCurrentWish] = useState(0);
 
   const wishes = [
     {
