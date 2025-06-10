@@ -7,13 +7,7 @@ import Link from 'next/link';
 export default function AnshitaEffectPage() {
 
   const effects = [
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: "How I Treat My Family",
-      before: "I used to be impatient with my parents, quick to get frustrated when they didn&apos;t understand something.",
-      after: "Now I listen with the same patience you showed me. I remember how gently you explained things, and I do the same.",
-      color: "from-pink-400 to-rose-400"
-    },
+   
     {
       icon: <Users className="w-8 h-8" />,
       title: "How I Handle Friendships",
