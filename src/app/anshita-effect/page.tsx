@@ -1,18 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Heart, Users, Lightbulb, Smile, HandHeart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AnshitaEffectPage() {
-  const [currentEffect, setCurrentEffect] = useState(0);
 
   const effects = [
     {
       icon: <Heart className="w-8 h-8" />,
       title: "How I Treat My Family",
-      before: "I used to be impatient with my parents, quick to get frustrated when they didn't understand something.",
+      before: "I used to be impatient with my parents, quick to get frustrated when they didn&apos;t understand something.",
       after: "Now I listen with the same patience you showed me. I remember how gently you explained things, and I do the same.",
       color: "from-pink-400 to-rose-400"
     },
@@ -20,7 +18,7 @@ export default function AnshitaEffectPage() {
       icon: <Users className="w-8 h-8" />,
       title: "How I Handle Friendships",
       before: "I was possessive and demanding, expecting friends to always be available for me.",
-      after: "You taught me that real friendship means giving space, respecting boundaries, and being there without suffocating.",
+      after: &quot;You taught me that real friendship means giving space, respecting boundaries, and being there without suffocating.&quot;,
       color: "from-blue-400 to-cyan-400"
     },
     {
@@ -153,9 +151,9 @@ export default function AnshitaEffectPage() {
           >
             <div className="bg-white/60 rounded-2xl p-6 backdrop-blur-sm">
               <p className="text-gray-800 font-handwritten text-xl leading-relaxed">
-                "You probably don't even realize it, but your kindness lives on in every person I meet, 
-                every conversation I have, every moment I choose compassion over judgment. 
-                You made me a better human being, and through me, you've touched countless other lives."
+                &quot;You probably don&apos;t even realize it, but your kindness lives on in every person I meet,
+                every conversation I have, every moment I choose compassion over judgment.
+                You made me a better human being, and through me, you&apos;ve touched countless other lives.&quot;
               </p>
             </div>
           </motion.div>

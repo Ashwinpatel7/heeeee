@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Heart, MessageCircle, Smile, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Heart, Star } from 'lucide-react';
 import Link from 'next/link';
 
 export default function MateChroniclesPage() {
-  const [currentMate, setCurrentMate] = useState(0);
 
   const mateMemories = [
     {

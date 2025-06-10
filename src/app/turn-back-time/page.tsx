@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Heart, MessageSquare, Shield, Pause } from 'lucide-react';
 import Link from 'next/link';
 
 export default function TurnBackTimePage() {
-  const [currentRegret, setCurrentRegret] = useState(0);
 
   const regrets = [
     {
