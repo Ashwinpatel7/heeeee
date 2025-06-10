@@ -18,7 +18,7 @@ export default function AnshitaEffectPage() {
       icon: <Users className="w-8 h-8" />,
       title: "How I Handle Friendships",
       before: "I was possessive and demanding, expecting friends to always be available for me.",
-      after: &quot;You taught me that real friendship means giving space, respecting boundaries, and being there without suffocating.&quot;,
+      after: "You taught me that real friendship means giving space, respecting boundaries, and being there without suffocating.",
       color: "from-blue-400 to-cyan-400"
     },
     {
@@ -151,9 +151,9 @@ export default function AnshitaEffectPage() {
           >
             <div className="bg-white/60 rounded-2xl p-6 backdrop-blur-sm">
               <p className="text-gray-800 font-handwritten text-xl leading-relaxed">
-                &quot;You probably don&apos;t even realize it, but your kindness lives on in every person I meet,
+                You probably don&apos;t even realize it, but your kindness lives on in every person I meet,
                 every conversation I have, every moment I choose compassion over judgment.
-                You made me a better human being, and through me, you&apos;ve touched countless other lives.&quot;
+                You made me a better human being, and through me, you&apos;ve touched countless other lives.
               </p>
             </div>
           </motion.div>
